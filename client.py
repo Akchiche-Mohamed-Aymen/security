@@ -3,13 +3,12 @@ import socket
 import threading
 import time
 import json
-
+stats = {}
 HOST = "127.0.0.1"
 PORT = 8000
 Limit = 4
 success_count = {'sum': 0 }
 def client_task(client_id, requests_count ):
-    
     for i in range(requests_count):
         try:
             start = time.time()
@@ -31,42 +30,47 @@ def client_task(client_id, requests_count ):
                 response += chunk
 
             response = response.decode()
-            
+            blocked = False
             parts = response.split("\r\n\r\n")
             body = parts[1] if len(parts) > 1 else ""
-            message = ''
-            # Parse JSON response
+            status = None
             if body:
                 data = json.loads(body)
-                message = f"[Client {client_id}] Request {i+1} -> getting : {data['value']} in security exam"
                 if data['success']:
+                    status = data['success']
                     success_count['sum'] += 1
+                else :
+                    if 'value' in data :
+                        status = data['success']  
+                    elif 'error' in data:
+                        status = data['success']
+                        blocked = True
+                                             
             else:
-                message = f"[Client {client_id}] Request {i+1} -> No response body"
+                status = False
             s.close()
             end = time.time()
-            latency = end - start
-            print(f"{message} | latency: {latency:.2f} seconds")
+            latency = end - start  
+            stats[client_id + 1][f"request_{i+1}"] = {'latency': latency  , 'status' : status } 
+            with open("enable.json", "r") as f:
+                enable_security = json.load(f)["enabled"]
+            if enable_security:
+                stats[client_id + 1][f"request_{i+1}"]['blocked'] = blocked
 
         except Exception as e:
             print(f"[Client {client_id}] Error: {type(e).__name__}: {e}")
 
 
-def run_simulation(num_clients=10 , type_request = 1) :
+       
+def run_simulation(requests , num_clients=10 ) :
     threads = []
+
     start_time = time.time()
-    requests = []
     for i in range(num_clients):
-        if type_request == 1:
-            requests_per_client = randint(1, 5)
-        elif type_request == 2:
-            requests_per_client = randint(6, 10)
-        else:
-            requests_per_client = randint(10, 20)
-        requests.append(requests_per_client)
+        stats[i + 1] = {'requests': requests[i]}
         t = threading.Thread(
             target=client_task,
-            args=(i, requests_per_client)
+            args=(i, requests[i])
         )
         threads.append(t)
         t.start()
@@ -79,23 +83,13 @@ def run_simulation(num_clients=10 , type_request = 1) :
     print("\n--- Simulation Finished ---")
     total_requests = sum(requests)
     total_time = end_time - start_time
-    print(f"Total requests: {total_requests}")
-    print(f"Total time: {total_time:.2f} seconds")
-    print(f'Throughput: {success_count["sum"] / total_time:.2f} requests/sec')
-    print(f"Total successful responses: {success_count['sum']} / {total_requests} ")
-    print(f'Failed responses: {total_requests - success_count["sum"]}  requests')
+    stats['total_requests'] = total_requests
+    stats['total_time'] = f'{round(total_time, 2)} s'
+    stats['throughput'] = f'{round(success_count["sum"] / total_time, 2)} req/sec'
+    stats['successful_requests'] = success_count['sum']
+    stats['failed_requests'] = total_requests - success_count['sum']
+    return stats
 
 
-if __name__ == "__main__":
-    print('Choice 1: Low load (5 clients, 2 requests each)')
-    print('Choice 2: Medium load (10 clients, 5 requests each)')
-    print('Choice 3: High load (20 clients, 10 requests each)')
-    choice = int(input("Enter your choice (1-3): "))
-    if choice == 1:
-        run_simulation(num_clients=5, type_request = choice)
-    elif choice == 2:
-        run_simulation(num_clients=10, type_request = choice)
-    else:
-        run_simulation(num_clients=20, type_request = choice)
 
 #py client.py

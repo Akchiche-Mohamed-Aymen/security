@@ -1,16 +1,25 @@
 from socketserver import ThreadingMixIn
 from http.server import HTTPServer, BaseHTTPRequestHandler
-from time import sleep
 from random import randint
 import json
-
-
+rate_limit = 4
+#make it 10 seconds
+punishment_time = 
+time_limit = 
+req = {
+    '<ip>' : 0
+}
 class ThreadingServer(ThreadingMixIn, HTTPServer):
     pass
 
 class RequestHandler(BaseHTTPRequestHandler):
 
     def do_GET(self):
+        ip = self.client_address[0]
+        if ip not in req:
+            req[ip] = 1
+        else:
+            req[ip] += 1
             try:    
                 if randint(1, 100) <= 30:
                     data = {
@@ -25,7 +34,6 @@ class RequestHandler(BaseHTTPRequestHandler):
                         'code': 200
                     }
         
-                sleep(1)
                 self.send_response(data['code'])
                 self.send_header("Content-type", "application/json")
                 response = json.dumps(data)
