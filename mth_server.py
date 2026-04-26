@@ -11,7 +11,6 @@ class ThreadingServer(ThreadingMixIn, HTTPServer):
 class RequestHandler(BaseHTTPRequestHandler):
 
     def do_GET(self):
-        def do_GET(self):
             try:    
                 if randint(1, 100) <= 30:
                     data = {
