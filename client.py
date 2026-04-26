@@ -34,10 +34,6 @@ def client_task(client_id, requests_count ):
             
             parts = response.split("\r\n\r\n")
             body = parts[1] if len(parts) > 1 else ""
-            headers = parts[0] if len(parts) > 0 else ""
-            if "429" in headers:
-                print(f"[Client {client_id}] Request {i+1} -> BLOCKED")
-                return
             message = ''
             # Parse JSON response
             if body:
