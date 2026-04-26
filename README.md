@@ -5,5 +5,5 @@ py mth_server.py
 ```
 2) then:
    ```bash
-   py client
+   py client.py
    ```
