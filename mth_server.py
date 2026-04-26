@@ -38,4 +38,5 @@ def create_server(PORT = 8000):
     server = ThreadingServer(('', PORT), RequestHandler)
     print(f'Multithreaded server running on port {PORT}...')
     server.serve_forever()
+create_server()
 #py mth_server.py
