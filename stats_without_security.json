@@ -1,0 +1,41 @@
+{
+    "1": {
+        "requests": 2,
+        "request_1": {
+            "latency": 0.0030291080474853516,
+            "status": true
+        },
+        "request_2": {
+            "latency": 0.0029892921447753906,
+            "status": true
+        }
+    },
+    "2": {
+        "requests": 1,
+        "request_1": {
+            "latency": 0.004024982452392578,
+            "status": true
+        }
+    },
+    "3": {
+        "requests": 4,
+        "request_1": {
+            "latency": 0.0029935836791992188,
+            "status": true
+        },
+        "request_2": {
+            "latency": 0.0019953250885009766,
+            "status": false
+        },
+        "request_3": {
+            "latency": 0.002234935760498047,
+            "status": true
+        },
+        "request_4": {
+            "latency": 0.0030786991119384766,
+            "status": false
+        }
+    },
+    "total_requests": 7,
+    "total_time": 0.01
+}

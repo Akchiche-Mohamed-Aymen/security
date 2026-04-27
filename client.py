@@ -3,11 +3,11 @@ import socket
 import threading
 import time
 import json
+from pandas import DataFrame
 stats = {}
 HOST = "127.0.0.1"
 PORT = 8000
 Limit = 4
-success_count = {'sum': 0 }
 def client_task(client_id, requests_count ):
     for i in range(requests_count):
         try:
@@ -36,15 +36,10 @@ def client_task(client_id, requests_count ):
             status = None
             if body:
                 data = json.loads(body)
-                if data['success']:
-                    status = data['success']
-                    success_count['sum'] += 1
-                else :
-                    if 'value' in data :
-                        status = data['success']  
-                    elif 'error' in data:
-                        status = data['success']
-                        blocked = True
+                
+                status = data['success']
+                if 'error' in data:
+                       blocked = True
                                              
             else:
                 status = False
@@ -64,7 +59,8 @@ def client_task(client_id, requests_count ):
        
 def run_simulation(requests , num_clients=10 ) :
     threads = []
-
+    with open("enable.json", "r") as f:
+                enable_security = json.load(f)["enabled"]
     start_time = time.time()
     for i in range(num_clients):
         stats[i + 1] = {'requests': requests[i]}
@@ -80,15 +76,18 @@ def run_simulation(requests , num_clients=10 ) :
 
     end_time = time.time()
 
-    print("\n--- Simulation Finished ---")
     total_requests = sum(requests)
     total_time = end_time - start_time
     stats['total_requests'] = total_requests
-    stats['total_time'] = f'{round(total_time, 2)} s'
-    stats['throughput'] = f'{round(success_count["sum"] / total_time, 2)} req/sec'
-    stats['successful_requests'] = success_count['sum']
-    stats['failed_requests'] = total_requests - success_count['sum']
+    stats['total_time'] = round(total_time, 2)
+    if not enable_security:
+       with open("stats_without_security.json", "w") as f:
+           json.dump(stats, f , indent=4)
+    else :
+        with open("stats_with_security.json", "w") as f:
+           json.dump(stats, f , indent=4)
     return stats
+                
 
 
 

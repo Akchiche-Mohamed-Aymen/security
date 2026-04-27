@@ -1,0 +1,48 @@
+{
+    "1": {
+        "requests": 2,
+        "request_1": {
+            "latency": 0.03749728202819824,
+            "status": false,
+            "blocked": false
+        },
+        "request_2": {
+            "latency": 0.003991842269897461,
+            "status": true,
+            "blocked": false
+        }
+    },
+    "2": {
+        "requests": 1,
+        "request_1": {
+            "latency": 0.0030350685119628906,
+            "status": true,
+            "blocked": false
+        }
+    },
+    "3": {
+        "requests": 4,
+        "request_1": {
+            "latency": 0.004033088684082031,
+            "status": false,
+            "blocked": false
+        },
+        "request_2": {
+            "latency": 0.0026175975799560547,
+            "status": false,
+            "blocked": true
+        },
+        "request_3": {
+            "latency": 0.0032715797424316406,
+            "status": false,
+            "blocked": true
+        },
+        "request_4": {
+            "latency": 0.003062725067138672,
+            "status": false,
+            "blocked": true
+        }
+    },
+    "total_requests": 7,
+    "total_time": 0.08
+}

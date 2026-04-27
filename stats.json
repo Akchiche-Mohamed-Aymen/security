@@ -1,341 +1,37 @@
 {
     "1": {
-        "requests": 6,
+        "requests": 5,
         "request_1": {
-            "latency": 0.006170988082885742,
-            "status": true
+            "latency": 0.004599332809448242,
+            "status": false
         },
         "request_2": {
-            "latency": 0.5186624526977539,
-            "status": true
+            "latency": 0.002936124801635742,
+            "status": false
         },
         "request_3": {
-            "latency": 0.009065389633178711,
+            "latency": 0.0034439563751220703,
             "status": false
         },
         "request_4": {
-            "latency": 0.010760307312011719,
-            "status": false
-        },
-        "request_5": {
-            "latency": 0.008522272109985352,
+            "latency": 0.0030066967010498047,
             "status": true
         },
-        "request_6": {
-            "latency": 0.008022546768188477,
+        "request_5": {
+            "latency": 0.002838134765625,
             "status": true
         }
     },
+    "total_requests": 6,
+    "total_time": "0.02 s",
+    "throughput": "205.27 req/sec",
+    "successful_requests": 4,
+    "failed_requests": 2,
     "2": {
-        "requests": 10,
+        "requests": 1,
         "request_1": {
-            "latency": 0.005421161651611328,
-            "status": true
-        },
-        "request_2": {
-            "latency": 0.008725404739379883,
-            "status": false
-        },
-        "request_3": {
-            "latency": 0.006985664367675781,
-            "status": true
-        },
-        "request_4": {
-            "latency": 0.005979776382446289,
-            "status": true
-        },
-        "request_5": {
-            "latency": 0.00755000114440918,
-            "status": true
-        },
-        "request_6": {
-            "latency": 0.006646394729614258,
-            "status": true
-        },
-        "request_7": {
-            "latency": 0.003988742828369141,
-            "status": true
-        },
-        "request_8": {
-            "latency": 0.002324342727661133,
-            "status": true
-        },
-        "request_9": {
-            "latency": 0.001993417739868164,
-            "status": true
-        },
-        "request_10": {
-            "latency": 0.0009982585906982422,
+            "latency": 0.004025697708129883,
             "status": true
         }
-    },
-    "3": {
-        "requests": 6,
-        "request_1": {
-            "latency": 0.007381439208984375,
-            "status": false
-        },
-        "request_2": {
-            "latency": 0.006689548492431641,
-            "status": true
-        },
-        "request_3": {
-            "latency": 0.008195638656616211,
-            "status": false
-        },
-        "request_4": {
-            "latency": 0.00799870491027832,
-            "status": true
-        },
-        "request_5": {
-            "latency": 0.0059888362884521484,
-            "status": true
-        },
-        "request_6": {
-            "latency": 0.005978107452392578,
-            "status": true
-        }
-    },
-    "4": {
-        "requests": 9,
-        "request_1": {
-            "latency": 0.007474184036254883,
-            "status": true
-        },
-        "request_2": {
-            "latency": 0.008630752563476562,
-            "status": true
-        },
-        "request_3": {
-            "latency": 0.005980253219604492,
-            "status": false
-        },
-        "request_4": {
-            "latency": 0.0072171688079833984,
-            "status": true
-        },
-        "request_5": {
-            "latency": 0.0069828033447265625,
-            "status": true
-        },
-        "request_6": {
-            "latency": 0.00598597526550293,
-            "status": false
-        },
-        "request_7": {
-            "latency": 0.0043146610260009766,
-            "status": true
-        },
-        "request_8": {
-            "latency": 0.001996755599975586,
-            "status": true
-        },
-        "request_9": {
-            "latency": 0.001993417739868164,
-            "status": true
-        }
-    },
-    "5": {
-        "requests": 6,
-        "request_1": {
-            "latency": 0.008458137512207031,
-            "status": true
-        },
-        "request_2": {
-            "latency": 0.007646799087524414,
-            "status": false
-        },
-        "request_3": {
-            "latency": 0.006980419158935547,
-            "status": false
-        },
-        "request_4": {
-            "latency": 0.008212566375732422,
-            "status": true
-        },
-        "request_5": {
-            "latency": 0.006982564926147461,
-            "status": false
-        },
-        "request_6": {
-            "latency": 0.00498509407043457,
-            "status": true
-        }
-    },
-    "6": {
-        "requests": 6,
-        "request_1": {
-            "latency": 0.008462190628051758,
-            "status": true
-        },
-        "request_2": {
-            "latency": 0.00863790512084961,
-            "status": true
-        },
-        "request_3": {
-            "latency": 0.0059871673583984375,
-            "status": false
-        },
-        "request_4": {
-            "latency": 0.008211374282836914,
-            "status": true
-        },
-        "request_5": {
-            "latency": 0.005986213684082031,
-            "status": false
-        },
-        "request_6": {
-            "latency": 0.00498509407043457,
-            "status": true
-        }
-    },
-    "7": {
-        "requests": 9,
-        "request_1": {
-            "latency": 0.5134575366973877,
-            "status": true
-        },
-        "request_2": {
-            "latency": 0.01208353042602539,
-            "status": true
-        },
-        "request_3": {
-            "latency": 0.009567975997924805,
-            "status": true
-        },
-        "request_4": {
-            "latency": 0.009641885757446289,
-            "status": true
-        },
-        "request_5": {
-            "latency": 0.008376121520996094,
-            "status": true
-        },
-        "request_6": {
-            "latency": 0.006070375442504883,
-            "status": true
-        },
-        "request_7": {
-            "latency": 0.002992391586303711,
-            "status": true
-        },
-        "request_8": {
-            "latency": 0.0029921531677246094,
-            "status": true
-        },
-        "request_9": {
-            "latency": 0.001994609832763672,
-            "status": true
-        }
-    },
-    "8": {
-        "requests": 7,
-        "request_1": {
-            "latency": 0.5178020000457764,
-            "status": true
-        },
-        "request_2": {
-            "latency": 0.012063980102539062,
-            "status": true
-        },
-        "request_3": {
-            "latency": 0.009276628494262695,
-            "status": true
-        },
-        "request_4": {
-            "latency": 0.008002042770385742,
-            "status": false
-        },
-        "request_5": {
-            "latency": 0.008026599884033203,
-            "status": true
-        },
-        "request_6": {
-            "latency": 0.005025148391723633,
-            "status": false
-        },
-        "request_7": {
-            "latency": 0.0029921531677246094,
-            "status": false
-        }
-    },
-    "9": {
-        "requests": 8,
-        "request_1": {
-            "latency": 0.008339643478393555,
-            "status": false
-        },
-        "request_2": {
-            "latency": 0.009639739990234375,
-            "status": true
-        },
-        "request_3": {
-            "latency": 0.005979776382446289,
-            "status": true
-        },
-        "request_4": {
-            "latency": 0.007218837738037109,
-            "status": true
-        },
-        "request_5": {
-            "latency": 0.005982875823974609,
-            "status": true
-        },
-        "request_6": {
-            "latency": 0.005982875823974609,
-            "status": true
-        },
-        "request_7": {
-            "latency": 0.0023262500762939453,
-            "status": true
-        },
-        "request_8": {
-            "latency": 0.001995563507080078,
-            "status": false
-        }
-    },
-    "10": {
-        "requests": 9,
-        "request_1": {
-            "latency": 0.5135288238525391,
-            "status": false
-        },
-        "request_2": {
-            "latency": 0.00989675521850586,
-            "status": true
-        },
-        "request_3": {
-            "latency": 0.009914398193359375,
-            "status": true
-        },
-        "request_4": {
-            "latency": 0.007166624069213867,
-            "status": false
-        },
-        "request_5": {
-            "latency": 0.009514093399047852,
-            "status": true
-        },
-        "request_6": {
-            "latency": 0.006063938140869141,
-            "status": true
-        },
-        "request_7": {
-            "latency": 0.00498652458190918,
-            "status": false
-        },
-        "request_8": {
-            "latency": 0.001996755599975586,
-            "status": false
-        },
-        "request_9": {
-            "latency": 0.0019948482513427734,
-            "status": true
-        }
-    },
-    "total_requests": 76,
-    "total_time": "0.57 s",
-    "throughput": "96.12 req/sec",
-    "successful_requests": 55,
-    "failed_requests": 21
+    }
 }

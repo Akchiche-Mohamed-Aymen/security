@@ -5,15 +5,8 @@ import json
 import time
 
 rate_limit = 4
-time_window = 10          # seconds
-punishment_time = 10       # seconds
-
-# IP tracking structure:
-# req[ip] = {
-#   "count": int,
-#   "start_time": float,
-#   "blocked_until": float
-# }
+time_window = 1         
+punishment_time = 2     
 req = {}
 class ThreadingServer(ThreadingMixIn, HTTPServer):
     pass
@@ -26,9 +19,10 @@ class RequestHandler(BaseHTTPRequestHandler):
             if time.time() < req[ip]["blocked_until"]:
                 return True
         return False
-    with open("enable.json", "r") as f:
-        enable_security = json.load(f)["enabled"]
     def do_GET(self):
+            with open("enable.json", "r") as f:
+                self.enable_security = json.load(f)["enabled"]
+                print(f"--------------------> {self.enable_security}")
             ip = self.client_address[0]
             now = time.time()
             if ip not in req:
@@ -41,7 +35,7 @@ class RequestHandler(BaseHTTPRequestHandler):
             user = req[ip]
 
             #  Check punishment (temporary blocking)
-            if now < user["blocked_until"] and enable_security:
+            if now < user["blocked_until"] and self.enable_security:
                 self.send_response(429)
                 self.send_header("Content-type", "application/json")
                 self.end_headers()
@@ -53,14 +47,14 @@ class RequestHandler(BaseHTTPRequestHandler):
                 return
 
             # 🔄 Reset window if 10 seconds passed
-            if now - user["start_time"] > time_window and enable_security:
+            if now - user["start_time"] > time_window and self.enable_security:
                 user["count"] = 0
                 user["start_time"] = now
 
             user["count"] += 1
 
             # ❌ Rate limit exceeded → apply punishment
-            if user["count"] > rate_limit and enable_security:
+            if user["count"] > rate_limit and self.enable_security:
                 user["blocked_until"] = now + punishment_time
                 user["count"] = 0
 
